@@ -24,8 +24,9 @@ class Library:
 
     def add_book(self, title: str, author: str, year: int):
         """Добавляет книгу в библиотеку."""
+        next_id = max((book.id for book in self.books), default=0) + 1
         book = Book(title, author, year)
-        book.id = len(self.books) + 1
+        book.id = next_id
         self.books.append(book)
         self.save_books()
         print(f"Книга '{title}' добавлена с ID {book.id}.")
